@@ -14,6 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class LeilaoPage {
 	
 	private static final String URL_CADASTRO_LEILAO = "http://localhost:8080/leiloes/new";
+	private static final String URL_LISTAGEM_LEILAO = "http://localhost:8080/leiloes";
 	private ChromeDriver browser;
 
 	public LeilaoPage( ChromeDriver browser) {
@@ -47,6 +48,13 @@ public class LeilaoPage {
 		return colunaNome.getText().equals(nome)
 				&& colunaDataAbertura.getText().equals(dataAbertura)
 				&& colunaValorInicial.getText().equals(valorInicial);
+	}
+
+	/**
+	 * @return
+	 */
+	public boolean isPaginaAtual() {
+		return browser.getCurrentUrl().equals(URL_LISTAGEM_LEILAO);
 	}
 
 

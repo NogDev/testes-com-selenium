@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
  * @since Feb 17, 2021
  */
 public class CadastroLeilaoPage {
+	private static final String URL_CADASTRO_LEILAO = "http://localhost:8080/leiloes/new";
 	
 	private ChromeDriver browser;
 
@@ -34,5 +35,21 @@ public class CadastroLeilaoPage {
 		this.browser.findElement(By.id("button-submit")).submit();
 		
 		return new LeilaoPage(browser);
+	}
+	
+	public boolean isPaginaAtual() {
+		
+		return browser.getCurrentUrl().equals(URL_CADASTRO_LEILAO);
+	}
+
+	/**
+	 * @return
+	 */
+	public boolean isMensagensDeValidacaoVisiveis() {
+		String pageSource = browser.getPageSource();
+		return pageSource.contains("não deve estar em branco")
+				&& pageSource.contains("minimo 3 caracteres")
+				&& pageSource.contains("deve ser um valor maior de 0.1")
+				&& pageSource.contains("deve ser uma data no formato dd/MM/yyyy");
 	}
 }
