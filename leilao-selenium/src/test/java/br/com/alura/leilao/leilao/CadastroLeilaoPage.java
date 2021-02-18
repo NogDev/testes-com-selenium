@@ -3,6 +3,7 @@
  */
 package br.com.alura.leilao.leilao;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
@@ -19,5 +20,19 @@ public class CadastroLeilaoPage {
 
 	public void fechar() {
 		browser.quit();
+	}
+
+	/**
+	 * @param Nome do leilão
+	 * @param Valor inicial 
+	 * @param Data de Abertura
+	 */
+	public LeilaoPage cadastrarLeilao(String nome, String valorInicial, String dataAbertura) {
+		this.browser.findElement(By.id("nome")).sendKeys(nome);
+		this.browser.findElement(By.id("valorInicial")).sendKeys(valorInicial);
+		this.browser.findElement(By.id("dataAbertura")).sendKeys(dataAbertura);
+		this.browser.findElement(By.id("button-submit")).submit();
+		
+		return new LeilaoPage(browser);
 	}
 }
