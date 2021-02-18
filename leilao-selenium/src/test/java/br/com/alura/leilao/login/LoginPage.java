@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import br.com.alura.leilao.leilao.LeilaoPage;
+
 /**
  * @author andersonnogueira
  * @since Feb 17, 2021
@@ -37,8 +39,10 @@ public class LoginPage {
 	}
 
 
-	public void submeteFormulario() {
+	public LeilaoPage efetuarLogin() {
 		browser.findElement(By.id("login-form")).submit();	
+		
+		return new LeilaoPage(browser);
 	}
 
 	public boolean isPaginaDeLogin() {
