@@ -4,27 +4,23 @@
 package br.com.alura.leilao.leilao;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+import br.com.alura.leilao.PageObject;
 
 /**
  * @author andersonnogueira
  * @since Feb 17, 2021
  */
-public class LeilaoPage {
+public class LeilaoPage extends PageObject{
 	
 	private static final String URL_CADASTRO_LEILAO = "http://localhost:8080/leiloes/new";
 	private static final String URL_LISTAGEM_LEILAO = "http://localhost:8080/leiloes";
-	private ChromeDriver browser;
 
-	public LeilaoPage( ChromeDriver browser) {
-		this.browser = browser;
+	public LeilaoPage( WebDriver browser) {
+		super(browser);
 	}
-
-	public void fechar() {
-		browser.quit();
-	}
-
 	
 	public CadastroLeilaoPage carregarFormulario() {
 		this.browser.navigate().to(URL_CADASTRO_LEILAO);
